@@ -8,9 +8,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
+import android.view.SurfaceView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         val detector = BarcodeDetector.Builder(applicationContext)
                 .setBarcodeFormats(Barcode.DATA_MATRIX or Barcode.QR_CODE)
                 .build()
+        val cameraView = findViewById(R.id.surfaceView) as SurfaceView
 
+        var cameraSource = CameraSource.Builder(this,detector)
+                .setRequestedPreviewSize(640,480)
+                .build()
 
         // Is the detector working properly?
         if (!detector.isOperational) { // If not
