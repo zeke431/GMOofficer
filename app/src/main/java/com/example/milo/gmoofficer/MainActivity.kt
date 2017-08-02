@@ -31,17 +31,15 @@ class MainActivity : AppCompatActivity() {
         val detector = BarcodeDetector.Builder(applicationContext)
                 .setBarcodeFormats(Barcode.DATA_MATRIX or Barcode.QR_CODE)
                 .build()
-
         if (!detector.isOperational) {
             println("detector not operational")
             return
-            val frame = Frame.Builder().setBitmap(myBitmap).build()
-            val barcodes = detector.detect(frame)
-            val thisCode = barcodes.valueAt(0)
-            val txtView = findViewById(R.id.txtContent) as TextView
-            txtView.text = thisCode.rawValue
-
         }
+        val frame = Frame.Builder().setBitmap(myBitmap).build()
+        val barcodes = detector.detect(frame)
+        val thisCode = barcodes.valueAt(0)
+        val txtView = findViewById(R.id.txtContent) as TextView
+        txtView.text = thisCode.rawValue
     }
 }
 // testing version control
