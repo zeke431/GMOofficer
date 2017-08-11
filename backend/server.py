@@ -32,7 +32,7 @@ class Product(db.Model):
     Extra-credit, what would be a better default argument for the
     Enum typed variable 'foodtype'?
      '''
-    def __init__(self, name="", foodtype=0, price=0):
+    def __init__(self, name="", foodtype=0, price=0.0):
         self.name=name
         self.foodtype=foodtype
         self.price=price
@@ -103,11 +103,13 @@ def __init__(self, name, foodtype, price):
    self.price = price
 
 def add_product(name, foodtype, price):
-    product = Product(name, foodtpe, price)
+    product = Product(name, foodtype, price)
     db.session.add(product)
     db.session.commit()
     return product
-   ''' HW #5: Create some example products and save them to the database '''
+
+''' HW #5: Create some example products and save them to the database '''
+
 add_product("Digiorno frozen pepperoni pizza", 3, 9.99)
 add_product("Newman's Own Pesto Ravioli", 4, 4.99)
 add_product("Fritos honey BBQ", 5, 1.99)
