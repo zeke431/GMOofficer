@@ -10,10 +10,10 @@ app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
 
 
-''' 
+'''
 HW #1: Define the equivelent structure for 'Product' model.
 Consider: What data do you have access to, and what data does the user
-or app need to know...? 
+or app need to know...?
 
 Ex: would a 'brand' field be useful? Is it available?
 *** Consider doing #5 before any of the rest ***
@@ -21,18 +21,18 @@ Ex: would a 'brand' field be useful? Is it available?
 class Product(db.Model):
     id = db.Column('products_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
-    foodtype = db.Column(db.Enum) 
+    foodtype = db.Column(db.Enum)
     price = db.Column(db.String(200))
 
     # '__init__' gets called when you instantiate this class. Typically
     # it is called a constructor.
-    # Notice the default arguments. 
-    ''' 
+    # Notice the default arguments.
+    '''
     HW #2: What would be a better default argument for 'price'
     Extra-credit, what would be a better default argument for the
     Enum typed variable 'foodtype'?
      '''
-    def __init__(self, name=None, foodtype=None, price=None):
+    def __init__(self, name="", foodtype=0, price=0):
         self.name=name
         self.foodtype=foodtype
         self.price=price
@@ -59,15 +59,15 @@ def hello_world():
 @app.route('/api/products/<int:product_id>')
 def getProduct(product_id):
     print product_id # will print the number at the end of the url
-    ''' 
+    '''
     HW #3: Figure out how to return the Product whose id=product_id from
     the url above. A query that finds all of them is below. (hind: 'filter')
 
     Use the serialize_list function I wrote to turn the object lists (only lists)
-    into valid json. If you have a single item do not use it. 
+    into valid json. If you have a single item do not use it.
     '''
-
-    p = Product.query.all() # this returns ALL of them, change this
+    p = product.query.filter_by(id = product_id).all()
+#   p = Product.query.all() # this returns ALL of them, change this
 
     # for debugging...
     print "\n\nDEBUG:\n\nQuery objects: ", p
@@ -84,14 +84,16 @@ def serialize_list(in_list):
     return [a.serialize for a in in_list]
 
 
+@app.route('/api/products')
+def show_all():
+   return render_template('show_all.html', product = product.query.all() )
 
-
-''' 
+'''
 HW #4: Add another route that will return all of them at the url:
 
     "/api/products"
 
-Use the one above as template. 
+Use the one above as template.
 '''
 
 
@@ -99,8 +101,14 @@ def __init__(self, name, foodtype, price):
    self.name = name
    self.foodtype = foodtype
    self.price = price
-   
 
+def add_product(name, foodtype, price):
+    product = Product(name, foodtpe, price)
+    db.session.add(product)
+    db.session.commit()
+    return product
    ''' HW #5: Create some example products and save them to the database '''
-
+add_product("Digiorno frozen pepperoni pizza", 3, 9.99)
+add_product("Newman's Own Pesto Ravioli", 4, 4.99)
+add_product("Fritos honey BBQ", 5, 1.99)
 db.create_all()
