@@ -19,7 +19,7 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView Scanner;
-    static String ENDPOINT = "http://127.0.0.1:5000/";
+    static String ENDPOINT = "http://127.0.0.1:5000/"; // usually it's 192.168.1.something for your computers IP
     //private ProductInterface Products = null;
 
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         Scanner = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         Scanner.setFlash(true);
         setContentView(Scanner);                // Set the scanner view as the content view
+        connectToServer("11111"); // this is a test value I put into the server.py file to create a product with this UPC
     }
 
     @Override
@@ -43,14 +44,15 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         Scanner.stopCamera();           // Stop camera on pause
     }
 
-    public void connectToServer(Result rawResult) {
+    public void connectToServer(String upc) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ENDPOINT).addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         ProductInterface Products = retrofit.create(ProductInterface.class);
 
         // Call AsyncTask here...
-        Call<Product> p = Products.getProduct("11111"); //rawResult.getText().toString()
+        Call<Product> p = Products.getProduct(upc);
         if (p != null) {
             // valid p, asynchronously call function
             p.enqueue(new Callback<Product>() {
@@ -75,7 +77,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         // Do something with the result here
         Log.v(TAG, rawResult.getText()); // Prints scan results
         Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
-
+        connectToServer(rawResult.getText().toString());
 
         // If you would like to resume scanning, call this method below:
         Scanner.resumeCameraPreview(this);
