@@ -1,7 +1,4 @@
-#Sat Aug 05 14:51:28 PDT 2017
-base.0=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ee29640b6f67daa44dbc3f98d9e2627a606fa668
-renamed.1=classes2.dex
+#Fri Aug 11 15:00:21 PDT 2017
+base.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.1=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_311f30a24a5b1876f940ae7514a68463d693537f\\classes.dex
-base.1=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_311f30a24a5b1876f940ae7514a68463d693537f
-file.0=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ee29640b6f67daa44dbc3f98d9e2627a606fa668\\classes.dex
+file.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

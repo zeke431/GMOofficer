@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\drawable-v23\\abc_control_background_material.xml"
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/res/merged/debug/drawable-v23/abc_control_background_material.xml",
+        "source": "/home/bryan/.android/build-cache/b72f312b1da94b6bebf165dfab2d4a24c79796dc/output/res/drawable-v23/abc_control_background_material.xml"
+    },
+    {
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v23\\abc_control_background_material.xml",
+        "source": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\drawable-v23\\abc_control_background_material.xml"
     }
 ]

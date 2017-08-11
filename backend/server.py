@@ -62,8 +62,8 @@ def hello_world():
 # ex. 127.0.0.1:5000/api/products/1
 # would return the string: "Number: 1"
 @app.route('/api/products/<string:upc>')
-def getProduct(upc_input):
-    print upc_input # will print the number at the end of the url
+def getProduct(upc):
+    print upc # will print the number at the end of the url
     '''
     HW #3: Figure out how to return the Product whose id=product_id from
     the url above. A query that finds all of them is below. (hind: 'filter')
@@ -71,7 +71,7 @@ def getProduct(upc_input):
     Use the serialize_list function I wrote to turn the object lists (only lists)
     into valid json. If you have a single item do not use it.
     '''
-    p = Product.query.filter_by(upc = upc_input).all()
+    p = Product.query.filter_by(upc=upc).all()
 #   p = Product.query.all() # this returns ALL of them, change this
 
     # for debugging...
@@ -103,15 +103,8 @@ HW #4: Add another route that will return all of them at the url:
 Use the one above as template.
 '''
 
-
-def __init__(self, name, foodtype, price):
-   self.name = name
-   self.foodtype = foodtype
-   self.price = price
-
-
-def add_product(name, foodtype, price):
-    product = Product(name, foodtype, price)
+def add_product(name, foodtype, price, upc):
+    product = Product(name, foodtype, price, upc)
     db.session.add(product)
     db.session.commit()
     return product
@@ -119,7 +112,7 @@ def add_product(name, foodtype, price):
 db.create_all()
 
 ''' HW #5: Create some example products and save them to the database '''
-add_product("Newman's Own Pesto Ravioli", "soup", 4.99)
-add_product("Fritos honey BBQ", "cereal", 1.99)
+add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111")
+add_product("Fritos honey BBQ", "cereal", 1.99, "11111")
 #add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
 

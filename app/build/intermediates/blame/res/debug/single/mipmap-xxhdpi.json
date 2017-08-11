@@ -1,10 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
-        "source": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png",
+        "source": "/home/bryan/Development/Tutoring/GMOofficer/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher_round.png",
+        "source": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "/home/bryan/Development/Tutoring/GMOofficer/C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher_round.png",
+        "source": "/home/bryan/Development/Tutoring/GMOofficer/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     }
 ]

@@ -19,7 +19,7 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView Scanner;
-    static String ENDPOINT = "http://127.0.0.1:3000/";
+    static String ENDPOINT = "http://127.0.0.1:5000/";
     //private ProductInterface Products = null;
 
     @Override
@@ -43,25 +43,21 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         Scanner.stopCamera();           // Stop camera on pause
     }
 
-    @Override
-    public void handleResult(Result rawResult) {
-        // Do something with the result here
-        Log.v(TAG, rawResult.getText()); // Prints scan results
-        Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
-
+    public void connectToServer(Result rawResult) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ENDPOINT).addConverterFactory(GsonConverterFactory.create())
                 .build();
         ProductInterface Products = retrofit.create(ProductInterface.class);
 
         // Call AsyncTask here...
-        Call<Product> p = Products.getProduct(rawResult.getText().toString());
+        Call<Product> p = Products.getProduct("11111"); //rawResult.getText().toString()
         if (p != null) {
             // valid p, asynchronously call function
             p.enqueue(new Callback<Product>() {
                 @Override
                 public void onResponse(Call<Product> p, Response<Product> response) {
                     // the request worked!!
+                    Log.d(TAG, response.body().toString());
                     Log.d(TAG, p.toString());
                 }
 
@@ -72,6 +68,15 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
                 }
             });
         }
+    }
+
+    @Override
+    public void handleResult(Result rawResult) {
+        // Do something with the result here
+        Log.v(TAG, rawResult.getText()); // Prints scan results
+        Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+
+
         // If you would like to resume scanning, call this method below:
         Scanner.resumeCameraPreview(this);
     }
