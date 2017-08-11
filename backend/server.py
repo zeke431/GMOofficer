@@ -71,18 +71,18 @@ def getProduct(upc):
     Use the serialize_list function I wrote to turn the object lists (only lists)
     into valid json. If you have a single item do not use it.
     '''
-    p = Product.query.filter_by(upc=upc).all()
+    p = Product.query.filter_by(upc=upc).first()
 #   p = Product.query.all() # this returns ALL of them, change this
 
     # for debugging...
     print "\n\nDEBUG:\n\nQuery objects: ", p
 
     # serializes the list of items
-    item_list=serialize_list(p)
+    #item_list=serialize_list(p)
 
     # debugging....
-    print "Serialized items: ", item_list, "\n\n"
-    return jsonify(item_list)
+    #print "Serialized items: ", item_list, "\n\n"
+    return jsonify(p.serialize)
 
 
 def serialize_list(in_list):
@@ -116,3 +116,4 @@ add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111")
 add_product("Fritos honey BBQ", "cereal", 1.99, "11111")
 #add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
 
+app.run(host='0.0.0.0')
