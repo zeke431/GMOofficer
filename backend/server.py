@@ -20,16 +20,12 @@ Ex: would a 'brand' field be useful? Is it available?
 '''
 
 
-class FoodType(db.Enum):
-    Soup = "soup"
-    Cereal = "cereal"
-
-
 class Product(db.Model):
     id = db.Column('products_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
     foodtype = db.Column(db.Enum('soup', 'cereal'))
     price = db.Column(db.String(200))
+    upc = db.Column(db.String(100))
 
     # '__init__' gets called when you instantiate this class. Typically
     # it is called a constructor.
@@ -39,10 +35,11 @@ class Product(db.Model):
     Extra-credit, what would be a better default argument for the
     Enum typed variable 'foodtype'?
      '''
-    def __init__(self, name="", foodtype=0, price=0.0):
+    def __init__(self, name="", foodtype=0, price=0.0, upc=""):
         self.name=name
         self.foodtype=foodtype
         self.price=price
+        self.upc=upc
 
     @property
     def serialize(self):
@@ -50,6 +47,7 @@ class Product(db.Model):
         return {
             'id': self.id,
             'name':self.name,
+            'upc': self.upc,
             'price': self.price,
             'foodtype': self.foodtype
         }
@@ -63,9 +61,9 @@ def hello_world():
 # this captures the value at a certain location in the url
 # ex. 127.0.0.1:5000/api/products/1
 # would return the string: "Number: 1"
-@app.route('/api/products/<int:product_id>')
-def getProduct(product_id):
-    print product_id # will print the number at the end of the url
+@app.route('/api/products/<string:upc>')
+def getProduct(upc_input):
+    print upc_input # will print the number at the end of the url
     '''
     HW #3: Figure out how to return the Product whose id=product_id from
     the url above. A query that finds all of them is below. (hind: 'filter')
@@ -73,7 +71,7 @@ def getProduct(product_id):
     Use the serialize_list function I wrote to turn the object lists (only lists)
     into valid json. If you have a single item do not use it.
     '''
-    p = Product.query.filter_by(id = product_id).all()
+    p = Product.query.filter_by(upc = upc_input).all()
 #   p = Product.query.all() # this returns ALL of them, change this
 
     # for debugging...
