@@ -18,10 +18,17 @@ or app need to know...?
 Ex: would a 'brand' field be useful? Is it available?
 *** Consider doing #5 before any of the rest ***
 '''
+
+
+class FoodType(db.Enum):
+    Soup = "soup"
+    Cereal = "cereal"
+
+
 class Product(db.Model):
     id = db.Column('products_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
-    foodtype = db.Column(db.Enum)
+    foodtype = db.Column(db.Enum('soup', 'cereal'))
     price = db.Column(db.String(200))
 
     # '__init__' gets called when you instantiate this class. Typically
@@ -32,7 +39,7 @@ class Product(db.Model):
     Extra-credit, what would be a better default argument for the
     Enum typed variable 'foodtype'?
      '''
-    def __init__(self, name="", foodtype=0, price=0):
+    def __init__(self, name="", foodtype=0, price=0.0):
         self.name=name
         self.foodtype=foodtype
         self.price=price
@@ -44,7 +51,7 @@ class Product(db.Model):
             'id': self.id,
             'name':self.name,
             'price': self.price,
-            'foodtype': "" # TODO: fix this to work with an Enum
+            'foodtype': self.foodtype
         }
 
 
@@ -66,7 +73,7 @@ def getProduct(product_id):
     Use the serialize_list function I wrote to turn the object lists (only lists)
     into valid json. If you have a single item do not use it.
     '''
-    p = product.query.filter_by(id = product_id).all()
+    p = Product.query.filter_by(id = product_id).all()
 #   p = Product.query.all() # this returns ALL of them, change this
 
     # for debugging...
@@ -86,7 +93,9 @@ def serialize_list(in_list):
 
 @app.route('/api/products')
 def show_all():
-   return render_template('show_all.html', product = product.query.all() )
+    item_list = serialize_list(Product.query.all()) 
+    print item_list
+    return jsonify(item_list)
 
 '''
 HW #4: Add another route that will return all of them at the url:
@@ -102,13 +111,17 @@ def __init__(self, name, foodtype, price):
    self.foodtype = foodtype
    self.price = price
 
+
 def add_product(name, foodtype, price):
-    product = Product(name, foodtpe, price)
+    product = Product(name, foodtype, price)
     db.session.add(product)
     db.session.commit()
     return product
-   ''' HW #5: Create some example products and save them to the database '''
-add_product("Digiorno frozen pepperoni pizza", 3, 9.99)
-add_product("Newman's Own Pesto Ravioli", 4, 4.99)
-add_product("Fritos honey BBQ", 5, 1.99)
+
 db.create_all()
+
+''' HW #5: Create some example products and save them to the database '''
+add_product("Newman's Own Pesto Ravioli", "soup", 4.99)
+add_product("Fritos honey BBQ", "cereal", 1.99)
+#add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
+
