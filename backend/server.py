@@ -93,7 +93,7 @@ def serialize_list(in_list):
 
 @app.route('/api/products')
 def show_all():
-    item_list = serialize_list(Product.query.all()) 
+    item_list = serialize_list(Product.query.all())
     print item_list
     return jsonify(item_list)
 
@@ -118,18 +118,9 @@ def add_product(name, foodtype, price):
     db.session.commit()
     return product
 
-<<<<<<< HEAD
-''' HW #5: Create some example products and save them to the database '''
-
-add_product("Digiorno frozen pepperoni pizza", 3, 9.99)
-add_product("Newman's Own Pesto Ravioli", 4, 4.99)
-add_product("Fritos honey BBQ", 5, 1.99)
-=======
->>>>>>> 6c628b9743af0b809b98b321e4ce15da201042ac
 db.create_all()
 
 ''' HW #5: Create some example products and save them to the database '''
 add_product("Newman's Own Pesto Ravioli", "soup", 4.99)
 add_product("Fritos honey BBQ", "cereal", 1.99)
 #add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
-
