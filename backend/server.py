@@ -23,7 +23,7 @@ Ex: would a 'brand' field be useful? Is it available?
 class Product(db.Model):
     id = db.Column('products_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
-    foodtype = db.Column(db.Enum('soup', 'cereal'))
+    foodtype = db.Column(db.Enum('soup', 'cereal', 'Mints'))
     price = db.Column(db.String(200))
     upc = db.Column(db.String(100))
 
