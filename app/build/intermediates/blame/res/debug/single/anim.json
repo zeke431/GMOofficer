@@ -1,17 +1,5 @@
 [
     {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
         "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_fade_out.xml"
     },
@@ -20,16 +8,8 @@
         "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\679b521f09b9b7e5feae130218e229982080b713\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\679b521f09b9b7e5feae130218e229982080b713\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_slide_in_bottom.xml"
+        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
@@ -52,56 +32,16 @@
         "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_popup_enter.xml"
+        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\Milo\\.android\\build-cache\\51309bd40db2213975f215399d0b6b0828635b0c\\output\\res\\anim\\design_snackbar_in.xml"
     },
     {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
         "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\679b521f09b9b7e5feae130218e229982080b713\\output\\res\\anim\\design_snackbar_out.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_slide_out_top.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\679b521f09b9b7e5feae130218e229982080b713\\output\\res\\anim\\design_snackbar_in.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
-    },
-    {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\51309bd40db2213975f215399d0b6b0828635b0c\\output\\res\\anim\\design_snackbar_in.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
         "source": "C:\\Users\\Milo\\.android\\build-cache\\51309bd40db2213975f215399d0b6b0828635b0c\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
-    },
-    {
-        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\home\\bryan\\.android\\build-cache\\b72f312b1da94b6bebf165dfab2d4a24c79796dc\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
@@ -110,5 +50,9 @@
     {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
         "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\Milo\\.android\\build-cache\\fddb3256c51ebb3754928099201b82b61b112e0f\\output\\res\\anim\\abc_slide_in_bottom.xml"
     }
 ]

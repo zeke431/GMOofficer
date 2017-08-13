@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/home/bryan/Development/Tutoring/GMOofficer/app/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/home/bryan/Development/Tutoring/GMOofficer/app/src/debug/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\src\debug\shaders"/></dataSet></merger>

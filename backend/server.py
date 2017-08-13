@@ -16,7 +16,7 @@ Consider: What data do you have access to, and what data does the user
 or app need to know...?
 
 Ex: would a 'brand' field be useful? Is it available?
-*** Consider doing #5 before any of the rest ***
+*** Consider doing #5 before any of the rest **
 '''
 
 
@@ -91,7 +91,7 @@ def serialize_list(in_list):
 
 @app.route('/api/products')
 def show_all():
-    item_list = serialize_list(Product.query.all()) 
+    item_list = serialize_list(Product.query.all())
     print item_list
     return jsonify(item_list)
 
@@ -114,6 +114,7 @@ db.create_all()
 ''' HW #5: Create some example products and save them to the database '''
 add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111")
 add_product("Fritos honey BBQ", "cereal", 1.99, "11111")
+add_product("Tic Tac Wintergreen", "Mints", .99, "009800007677")
 #add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
 
 app.run(host='0.0.0.0')

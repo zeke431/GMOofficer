@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="57c73436f4bee945dcca4819a0e8198e7d03ce16">
-        <dex dex="/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f4014562e2e913f1157aa5a01351b9af04a06d26/classes.dex" />
+        sha1="7d7bc6abd9aabaabfb1372e4204b86372a6382da">
+        <dex dex="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_311f30a24a5b1876f940ae7514a68463d693537f\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_911d5014a5ba1966b02d5daafb40c6d61367ec82/classes.dex" />
+        <dex dex="C:\Users\Milo\AndroidStudioProjects\GMOOfficer\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ee29640b6f67daa44dbc3f98d9e2627a606fa668\classes.dex" />
     </item>
 
 </items>

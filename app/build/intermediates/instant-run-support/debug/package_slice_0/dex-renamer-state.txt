@@ -1,4 +1,0 @@
-#Fri Aug 11 15:45:00 PDT 2017
-base.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0
-renamed.0=classes.dex
-file.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex
