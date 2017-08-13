@@ -4,7 +4,15 @@
         "source": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher_round.png",
+        "source": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
         "source": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "C:\\home\\bryan\\Development\\Tutoring\\GMOofficer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]

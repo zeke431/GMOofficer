@@ -12,6 +12,6 @@ import retrofit2.http.Path;
 
 public interface ProductInterface {
     // asynchronously with a callback
-    @GET("/api/items/{upc}")
+    @GET("/api/products/{upc}")
     Call<Product> getProduct(@Path("upc") String barcode);
 }
