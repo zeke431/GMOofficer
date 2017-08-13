@@ -26,6 +26,7 @@ class Product(db.Model):
     foodtype = db.Column(db.Enum('soup', 'cereal', 'Mints'))
     price = db.Column(db.String(200))
     upc = db.Column(db.String(100))
+    isgmo = db.Column(db.Boolean())
 
     # '__init__' gets called when you instantiate this class. Typically
     # it is called a constructor.
@@ -35,11 +36,12 @@ class Product(db.Model):
     Extra-credit, what would be a better default argument for the
     Enum typed variable 'foodtype'?
      '''
-    def __init__(self, name="", foodtype=0, price=0.0, upc=""):
+    def __init__(self, name="", foodtype=0, price=0.0, upc="", isgmo=False):
         self.name=name
         self.foodtype=foodtype
         self.price=price
         self.upc=upc
+        self.isgmo=isgmo
 
     @property
     def serialize(self):
@@ -49,7 +51,8 @@ class Product(db.Model):
             'name':self.name,
             'upc': self.upc,
             'price': self.price,
-            'foodtype': self.foodtype
+            'foodtype': self.foodtype,
+            'isgmo': self.isgmo
         }
 
 
@@ -103,8 +106,8 @@ HW #4: Add another route that will return all of them at the url:
 Use the one above as template.
 '''
 
-def add_product(name, foodtype, price, upc):
-    product = Product(name, foodtype, price, upc)
+def add_product(name, foodtype, price, upc,isgmo):
+    product = Product(name, foodtype, price, upc,isgmo)
     db.session.add(product)
     db.session.commit()
     return product
@@ -112,9 +115,9 @@ def add_product(name, foodtype, price, upc):
 db.create_all()
 
 ''' HW #5: Create some example products and save them to the database '''
-add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111")
-add_product("Fritos honey BBQ", "cereal", 1.99, "11111")
-add_product("Tic Tac Wintergreen", "Mints", .99, "009800007677")
+add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111",False)
+add_product("Fritos honey BBQ", "cereal", 1.99, "11111",False)
+add_product("Tic Tac Wintergreen", "Mints", .99, "009800007677",True)
 #add_product("Fritos honey BBQ", "Cereal", 1.99)  # WONT WORK
 
 app.run(host='0.0.0.0')

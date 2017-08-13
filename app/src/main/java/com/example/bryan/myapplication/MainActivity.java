@@ -19,6 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import android.support.design.widget.Snackbar;
+import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
@@ -27,6 +28,11 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
     static String ENDPOINT = "http://192.168.1.87:5000/"; // usually it's 192.168.1.something for your computers IP
     //private ProductInterface Products = null;
     private Handler mhandler = null;
+    private ArrayList<Product> ScannedProducts = new ArrayList<Product>();
+
+    public void addToCart(Product p) {
+        ScannedProducts.add(p);
+    }
 
     @Override
     public void onCreate(Bundle state) {
@@ -95,6 +101,7 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
                     if (response.isSuccessful()) {
                         Product prod = response.body();
                         notifyHandler(prod);
+                        addToCart(prod);
 
                         // logging...
                         Log.d("NET", p.toString());
