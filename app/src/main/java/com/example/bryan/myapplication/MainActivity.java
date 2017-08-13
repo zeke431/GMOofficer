@@ -24,7 +24,7 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView Scanner;
-    static String ENDPOINT = "http://192.168.1.87/"; // usually it's 192.168.1.something for your computers IP
+    static String ENDPOINT = "http://192.168.1.87:5000/"; // usually it's 192.168.1.something for your computers IP
     //private ProductInterface Products = null;
     private Handler mhandler = null;
 
