@@ -118,12 +118,12 @@ def upload_file():
     if request.method == 'POST':
         excel_input = request.get_array(field_name='file')
         output = []
-        for row in excel_input[1:]: # slice 
+        for row in excel_input[1:]: # slice
             p = Product(*row[1:])
             db.session.add(p)
             db.session.commit()
             output.append(p)
-        
+
         return jsonify({"result": serialize_list(output)})
 
     return '''
