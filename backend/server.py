@@ -1,6 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
+from flask_excel as excel
 
 # Declarations and initializations. (Database, flask instance, etc...)
 engine = create_engine('sqlite:///:memory:', echo=True)
@@ -8,18 +9,11 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gmoofficer.sqlite3'
 app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
-
+excel.init_excel(app)
 
 '''
-HW #1: Define the equivelent structure for 'Product' model.
-Consider: What data do you have access to, and what data does the user
-or app need to know...?
-
-Ex: would a 'brand' field be useful? Is it available?
-*** Consider doing #5 before any of the rest **
+def of product class
 '''
-
-
 class Product(db.Model):
     id = db.Column('products_id', db.Integer, primary_key = True)
     name = db.Column(db.String(100))
@@ -32,9 +26,7 @@ class Product(db.Model):
     # it is called a constructor.
     # Notice the default arguments.
     '''
-    HW #2: What would be a better default argument for 'price'
-    Extra-credit, what would be a better default argument for the
-    Enum typed variable 'foodtype'?
+    default arguments
      '''
     def __init__(self, name="", foodtype=0, price=0.0, upc="", isgmo=False):
         self.name=name
@@ -67,12 +59,8 @@ def hello_world():
 @app.route('/api/products/<string:upc>')
 def getProduct(upc):
     print upc # will print the number at the end of the url
-    '''
-    HW #3: Figure out how to return the Product whose id=product_id from
-    the url above. A query that finds all of them is below. (hind: 'filter')
-
-    Use the serialize_list function I wrote to turn the object lists (only lists)
-    into valid json. If you have a single item do not use it.
+'''
+    returns product when upc=upc
     '''
     p = Product.query.filter_by(upc=upc).first()
 #   p = Product.query.all() # this returns ALL of them, change this
@@ -99,11 +87,7 @@ def show_all():
     return jsonify(item_list)
 
 '''
-HW #4: Add another route that will return all of them at the url:
-
-    "/api/products"
-
-Use the one above as template.
+returns all of them at the url /api/products
 '''
 
 def add_product(name, foodtype, price, upc,isgmo):
@@ -114,7 +98,7 @@ def add_product(name, foodtype, price, upc,isgmo):
 
 db.create_all()
 
-''' HW #5: Create some example products and save them to the database '''
+''' example products'''
 add_product("Newman's Own Pesto Ravioli", "soup", 4.99, "11111",False)
 add_product("Fritos honey BBQ", "cereal", 1.99, "11111",False)
 add_product("Tic Tac Wintergreen", "Mints", .99, "009800007677",True)
