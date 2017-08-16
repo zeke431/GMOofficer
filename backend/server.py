@@ -116,7 +116,11 @@ eventually for uploading the non-gmo spreadhsheet
 @app.route("/upload", methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        excel_input = request.get_array(field_name='file')
+        for row in excel_input:
+            print row
         return jsonify({"result": request.get_array(field_name='file')})
+
     return '''
     <!doctype html>
     <title>Upload an excel file</title>
@@ -134,13 +138,13 @@ def download_file():
 
 @app.route("/export", methods=['GET'])
 def export_records():
-    return excel.make_response_from_array([[1, 2], [3, 4]], "csv",
+    return excel.make_response_from_array([["ID", "Name"], [1, "Tic Tacs"]], "csv",
                                           file_name="export_data")
 
 
 @app.route("/download_file_named_in_unicode", methods=['GET'])
 def download_file_named_in_unicode():
-    return excel.make_response_from_array([[1, 2], [3, 4]], "csv",
+    return excel.make_response_from_array([["one", "two"], ["three", 4]], "csv",
                                           file_name="download_file")
 
 
