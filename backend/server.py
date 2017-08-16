@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
-from flask_excel as excel
+from flask_excel import excel
 
 # Declarations and initializations. (Database, flask instance, etc...)
 engine = create_engine('sqlite:///:memory:', echo=True)
@@ -59,9 +59,9 @@ def hello_world():
 @app.route('/api/products/<string:upc>')
 def getProduct(upc):
     print upc # will print the number at the end of the url
-'''
-    returns product when upc=upc
-    '''
+
+#returns product when upc=upc
+
     p = Product.query.filter_by(upc=upc).first()
 #   p = Product.query.all() # this returns ALL of them, change this
 
@@ -138,7 +138,7 @@ def export_records():
 @app.route("/download_file_named_in_unicode", methods=['GET'])
 def download_file_named_in_unicode():
     return excel.make_response_from_array([[1, 2], [3, 4]], "csv",
-                                          file_name=u"中文文件名")
+                                          file_name="download_file")
 
 
 
