@@ -117,9 +117,14 @@ eventually for uploading the non-gmo spreadhsheet
 def upload_file():
     if request.method == 'POST':
         excel_input = request.get_array(field_name='file')
-        for row in excel_input:
-            print row
-        return jsonify({"result": request.get_array(field_name='file')})
+        output = []
+        for row in excel_input[1:]: # slice 
+            p = Product(*row[1:])
+            db.session.add(p)
+            db.session.commit()
+            output.append(p)
+        
+        return jsonify({"result": serialize_list(output)})
 
     return '''
     <!doctype html>
@@ -138,7 +143,8 @@ def download_file():
 
 @app.route("/export", methods=['GET'])
 def export_records():
-    return excel.make_response_from_array([["ID", "Name"], [1, "Tic Tacs"]], "csv",
+    return excel.make_response_from_array([["ID", "Name", "Food Type", "Price", "UPC", "isGMO"], [1, "Tic Tacs RED", "Mints", 19.99, "009800007677", False],
+                                            [1, "Tic Tacs BLUE", "Mints", 19.99, "009800007677", False], [1, "Tic Tacs PINK", "Mints", 19.99, "009800007677", False]], "csv",
                                           file_name="export_data")
 
 
