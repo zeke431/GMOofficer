@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
-from flask_excel import excel
+from flask.ext import excel # this was what I changed
 
 # Declarations and initializations. (Database, flask instance, etc...)
 engine = create_engine('sqlite:///:memory:', echo=True)
