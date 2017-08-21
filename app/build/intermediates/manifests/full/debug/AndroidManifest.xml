@@ -11,6 +11,11 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <meta-data
         android:name="android.support.VERSION"
         android:value="26.0.0-alpha1" />
@@ -28,6 +33,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.bryan.myapplication.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="com.example.bryan.myapplication.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bryan.myapplication.MainActivity" />
         </activity>
     </application>
 
