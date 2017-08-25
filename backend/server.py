@@ -8,6 +8,7 @@ from flask.ext import excel # this was what I changed
 import datetime
 import bcrypt
 import jwt
+import json
 
 # Declarations and initializations. (Database, flask instance, etc...)
 engine = create_engine('sqlite:///:memory:', echo=True)
@@ -18,6 +19,7 @@ db = SQLAlchemy(app)
 excel.init_excel(app)
 
 secret_key="secret key"
+salt1 = b"$2a$12$w40nlebw3XyoZ5Cqke14M."
 
 
 class User(db.Model):
@@ -30,8 +32,8 @@ class User(db.Model):
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
 
-    def __init__(self, email, password, admin=False):
-        salt1 = b"$2a$12$w40nlebw3XyoZ5Cqke14M."
+    def __init__(self, email="", password="", admin=False):
+        
         self.email = email
         self.password = bcrypt.hashpw(
             password, salt1
@@ -55,7 +57,7 @@ class User(db.Model):
             payload = {
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
                 'iat': datetime.datetime.utcnow(),
-                'sub': self.id
+                'sub': self.id # 
             }
             return jwt.encode(
                 payload,
@@ -120,7 +122,7 @@ def hello_world():
 # this captures the value at a certain location in the url
 # ex. 127.0.0.1:5000/api/products/1
 # would return the string: "Number: 1"
-@app.route('/api/products/<string:upc>')
+@app.route('/api/proigducts/<string:upc>')
 def getProduct(upc):
     print upc # will print the number at the end of the url
 
@@ -216,10 +218,88 @@ def download_file_named_in_unicode():
 
 
 
-@app.route("/user", methods=['POST'])
+@app.route("/echo", methods=['POST'])
+def echo():
+    return request.json
+
+@app.route("/api/user", methods=['POST'])
 def create_user():
-    return
+    if request.method == "POST":
+        # this is the body of the request in json (if valid json)
+        print "JSON: ", request.json
+
+        # this is the user data which is now just a python dictionary
+        user_data = request.json['user']
+
+        # this is all the variables from within the user_data that we need for
+        # making a new user
+        email = str(user_data['email'])
+        password = str(user_data['password'])
+        admin = bool(user_data['admin'])
+
+        # this creates the user
+        new_user = User(email, password, admin)
+
+        # and just like when we created products, this creates a user.
+        db.session.add(new_user)
+        db.session.commit()
+
+        # prints the instance of the user
+        print new_user
     
+        # returns the json serialization of the new user
+        return jsonify(new_user.serialize)
+    else:
+        return None
+
+
+# TODO: build a login function
+# just like above you'll take the request body json (request.json)
+# and ...
+# 1.) Lookup user
+# 2.) Generate token
+# 3.) return token to user
+#
+# Assignment: Use postman to figure out how to test this!
+# once you do that we are close to implementing it into the app directly.
+@app.route("/api/users/login", methods=['POST'])
+def login_user():
+    if request.method=="POST":
+        credentials=request.json # user id, password
+        if not credentials:
+            return jsonify({"error": "no json data in request body."})
+        if "email" not in credentials:
+            return jsonify({"error": "missing key, 'email' from request body."})
+        if "password" not in credentials:
+            return jsonify({"error": "missing key, 'password' from request body."})
+
+        #  # get just the email field to lookup users
+        u = User.query.filter(User.email==credentials['email']).first()
+
+        # Did we find that user? if yes continue                                           
+        if u:
+            print "Attempting login for:", u.email
+
+            # Check the password against the one in the database
+            if check_password(u, credentials['password']):
+                token = u.encode_auth_token() # ?
+                print "Correct password, issuing token:", token
+                return jsonify({"token": token})
+
+            print "Incorrect password for user:", u.email
+            return jsonify({"error": "invalid password"})
+        else:
+            return jsonify({"error": "user {} not found".format(credentials['email'])})
+    return jsonify({"error": "invalid request. Use key 'email' and 'password' to login as a user."})
+    
+
+# this simply takes the User object, and the password and determines
+# whether or not the given password matches the one in the database.
+def check_password(user, password):
+    if user.password == bcrypt.hashpw(str(password), str(salt1)).decode():
+        return True
+    return False
+
 
 @app.route("/api/users/", methods=['GET'])
 def list_users():
@@ -231,13 +311,13 @@ if __name__ == "__main__":
     excel.init_excel(app)
 
 
-    u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
-    db.session.add(u)
-    db.session.commit()
-    auth_token = u.encode_auth_token()
-    print auth_token
-    decoded = u.decode_auth_token(auth_token)
-    print decoded
+    #u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
+    #db.session.add(u)
+    #db.session.commit()
+    #auth_token = u.encode_auth_token()
+    #print auth_token
+    #decoded = u.decode_auth_token(auth_token)
+    #print decoded
 
 
 app.run(host='0.0.0.0')
