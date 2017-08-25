@@ -17,6 +17,8 @@ app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
 excel.init_excel(app)
 
+secret_key="secret key"
+
 
 class User(db.Model):
     """ User Model for storing user related details """
@@ -37,6 +39,17 @@ class User(db.Model):
         self.registered_on = datetime.datetime.now()
         self.admin = admin
 
+    @staticmethod
+    def decode_auth_token(auth_token):
+        try:
+            payload = jwt.decode(auth_token, secret_key)
+            print payload
+            return payload['sub']
+        except jwt.ExpiredSignatureError:
+            return 'Signature expired. Please log in again.'
+        except jwt.InvalidTokenError:
+            return 'Invalid token. Please log in again.'
+
     def encode_auth_token(self):
         try:
             payload = {
@@ -46,8 +59,8 @@ class User(db.Model):
             }
             return jwt.encode(
                 payload,
-                'secret-key',
-                algorithm='HS256'
+                secret_key,
+                algorithm='HS256' 
                 )
         except Exception as e:
             return e
@@ -217,9 +230,14 @@ def list_users():
 if __name__ == "__main__":
     excel.init_excel(app)
 
-    
+
     u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
     db.session.add(u)
     db.session.commit()
+    auth_token = u.encode_auth_token()
+    print auth_token
+    decoded = u.decode_auth_token(auth_token)
+    print decoded
+
 
 app.run(host='0.0.0.0')
