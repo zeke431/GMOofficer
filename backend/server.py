@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from flask.ext import excel # this was what I changed
+import datetime
+import bcrypt
+import jwt
 
 # Declarations and initializations. (Database, flask instance, etc...)
 engine = create_engine('sqlite:///:memory:', echo=True)
@@ -13,6 +16,51 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gmoofficer.sqlite3'
 app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
 excel.init_excel(app)
+
+
+class User(db.Model):
+    """ User Model for storing user related details """
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    registered_on = db.Column(db.DateTime, nullable=False)
+    admin = db.Column(db.Boolean, nullable=False, default=False)
+
+    def __init__(self, email, password, admin=False):
+        salt1 = b"$2a$12$w40nlebw3XyoZ5Cqke14M."
+        self.email = email
+        self.password = bcrypt.hashpw(
+            password, salt1
+        ).decode()
+        self.registered_on = datetime.datetime.now()
+        self.admin = admin
+
+    def encode_auth_token(self):
+        try:
+            payload = {
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
+                'iat': datetime.datetime.utcnow(),
+                'sub': self.id
+            }
+            return jwt.encode(
+                payload,
+                'secret-key',
+                algorithm='HS256'
+                )
+        except Exception as e:
+            return e
+        return None
+
+    @property
+    def serialize(self):
+        '''Return object data in easily serializeable format'''
+        return {
+            'id': self.id,
+            'email':self.email,
+            'registered_on': self.registered_on,
+        }
 
 '''
 def of product class
@@ -155,7 +203,23 @@ def download_file_named_in_unicode():
 
 
 
+@app.route("/user", methods=['POST'])
+def create_user():
+    return
+    
+
+@app.route("/api/users/", methods=['GET'])
+def list_users():
+    users = User.query.all()
+    return jsonify({"result": serialize_list(users),
+                    "token": users[0].encode_auth_token()})
+
 if __name__ == "__main__":
     excel.init_excel(app)
+
+    
+    u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
+    db.session.add(u)
+    db.session.commit()
 
 app.run(host='0.0.0.0')
