@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\Milo\\.android\\build-cache\\e6c3e44935c7b2b6eb9b6854b1cfe5f064796d8e\\output\\res\\values\\values.xml",
+                    "file": "/home/bryan/.android/build-cache/de948e6d68ed7082934e8011692eda87114197fc/output/res/values/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

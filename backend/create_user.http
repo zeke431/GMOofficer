@@ -1,0 +1,10 @@
+POST http://127.0.0.1:5000/api/user
+Content-Type:Application/json
+
+{
+  "user": {
+  "email": "bryan.mccoid@gmail.com",
+  "password": "test",
+  "admin": true
+  }
+}

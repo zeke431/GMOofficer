@@ -1,4 +1,4 @@
-#Mon Aug 21 16:22:28 PDT 2017
-base.0=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1
+#Thu Aug 31 18:09:14 PDT 2017
+base.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
 renamed.0=classes.dex
-file.0=C\:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_1\\classes.dex
+file.0=/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex

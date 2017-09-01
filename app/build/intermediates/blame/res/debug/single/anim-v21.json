@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\51309bd40db2213975f215399d0b6b0828635b0c\\output\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/home/bryan/.android/build-cache/679b521f09b9b7e5feae130218e229982080b713/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "C:\\Users\\Milo\\AndroidStudioProjects\\GMOOfficer\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\Users\\Milo\\.android\\build-cache\\51309bd40db2213975f215399d0b6b0828635b0c\\output\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+        "merged": "/home/bryan/Development/Tutoring/GMOofficer/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/home/bryan/.android/build-cache/679b521f09b9b7e5feae130218e229982080b713/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
     }
 ]
