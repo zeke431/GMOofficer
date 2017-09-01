@@ -3,6 +3,7 @@
 
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from flask.ext import excel # this was what I changed
 import datetime
@@ -17,6 +18,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///gmoofficer.sqlite3'
 app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
 excel.init_excel(app)
+
+Session = sessionmaker(bind=engine)
 
 secret_key="secret key"
 salt1 = b"$2a$12$w40nlebw3XyoZ5Cqke14M."
@@ -304,20 +307,26 @@ def check_password(user, password):
 @app.route("/api/users/", methods=['GET'])
 def list_users():
     users = User.query.all()
-    return jsonify({"result": serialize_list(users),
-                    "token": users[0].encode_auth_token()})
+    return jsonify({"result": serialize_list(users)})
+
+
+@app.route("/api/user/<int:user_id>", methods=['GET', 'UPDATE'])
+def get_user(user_id):
+    user = User.query.filter(User.id==user_id).first()
+    print dir(user)
+    if user: # the user was found
+        return jsonify(user.serialize)
+    return jsonify({}) # the user wasn't found
 
 if __name__ == "__main__":
     excel.init_excel(app)
-
-
-    #u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
-    #db.session.add(u)
-    #db.session.commit()
-    #auth_token = u.encode_auth_token()
-    #print auth_token
-    #decoded = u.decode_auth_token(auth_token)
-    #print decoded
+    u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
+    db.session.add(u)
+    db.session.commit()
+    auth_token = u.encode_auth_token()
+    print auth_token
+    decoded = u.decode_auth_token(auth_token)
+    print decoded
 
 
 app.run(host='0.0.0.0')
