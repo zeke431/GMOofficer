@@ -8,9 +8,11 @@ import android.os.Parcelable;
  */
 
 public class User implements Parcelable{
-    public String name;
 
-    User(){
+    private String email;
+    private String token;
+
+    User(String email){
 
     }
 

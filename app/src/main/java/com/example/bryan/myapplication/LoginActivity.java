@@ -30,10 +30,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 import static android.Manifest.permission.READ_CONTACTS;
+import static com.example.bryan.myapplication.MainActivity.ENDPOINT;
 
 /**
  * A login screen that offers login via email/password.
@@ -323,10 +330,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(ENDPOINT).addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                UserInterface User = retrofit.create(UserInterface.class);
+
+                // make request
+                Call<String> u = User.loginUser("bryan.mccoid@gmail.com", "somepassword");
                 // Simulate network access.
+                Response<String> token = u.execute();
+                if (token.isSuccessful()) {
+                    Log.d("TOKEN", token.body());
+                }
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
+            } catch (IOException e) {
+
             }
 
             for (String credential : DUMMY_CREDENTIALS) {

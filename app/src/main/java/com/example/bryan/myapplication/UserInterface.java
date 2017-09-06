@@ -18,4 +18,7 @@ public interface UserInterface {
     @POST("api/user")
     Call<User> createUser(@Body User user);
 
+    @POST("api/users/login")
+    Call<String> loginUser(@Body String email, String password);
+
 }
