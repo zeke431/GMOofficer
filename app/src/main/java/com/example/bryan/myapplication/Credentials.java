@@ -7,4 +7,10 @@ package com.example.bryan.myapplication;
 public class Credentials {
     public String email;
     public String password;
+
+    Credentials(String email, String password) {
+        this.email=email;
+        this.password=password;
+    }
+
 }

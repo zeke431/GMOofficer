@@ -3,6 +3,7 @@ package com.example.bryan.myapplication;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 import static com.example.bryan.myapplication.MainActivity.ENDPOINT;
 
 /**
@@ -329,8 +331,32 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
+            //
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(ENDPOINT).addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
+            UserInterface User = retrofit.create(UserInterface.class);
+            Credentials loginCred = new Credentials(mEmail, mPassword);
+            loginCred.email = mEmail;
+            loginCred.password = mPassword;
+
+            // make request
+            Call<User> u = User.loginUser(loginCred);
             
+            Response<User> token = null;
+            try {
+                token = u.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (token.isSuccessful()) {
+                Log.d("TOKEN", token.body().getToken());
+                return true;
+            } else {
+                return false;
+            }
 
 
 //            for (String credential : DUMMY_CREDENTIALS) {
@@ -351,7 +377,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                //finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
