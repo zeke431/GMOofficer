@@ -9,17 +9,20 @@ import android.os.Parcelable;
 
 public class User implements Parcelable{
 
-    private String email;
     private String token;
 
-    User(String email){
-
+    User(String token){
+        this.token = token;
     }
 
     @Override
     public int describeContents() {
         //super.describeContents();
         return 0;
+    }
+
+    public String getToken() {
+        return this.token;
     }
 
     @Override

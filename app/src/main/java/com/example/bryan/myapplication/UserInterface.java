@@ -19,6 +19,6 @@ public interface UserInterface {
     Call<User> createUser(@Body User user);
 
     @POST("api/users/login")
-    Call<String> loginUser(@Body String email, String password);
+    Call<User> loginUser(@Body Credentials cred);
 
 }

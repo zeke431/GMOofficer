@@ -270,11 +270,11 @@ def login_user():
     if request.method=="POST":
         credentials=request.json # user id, password
         if not credentials:
-            return jsonify({"error": "no json data in request body."})
+            return jsonify({"error": "no json data in request body."}), 400
         if "email" not in credentials:
-            return jsonify({"error": "missing key, 'email' from request body."})
+            return jsonify({"error": "missing key, 'email' from request body."}), 400
         if "password" not in credentials:
-            return jsonify({"error": "missing key, 'password' from request body."})
+            return jsonify({"error": "missing key, 'password' from request body."}), 400
 
         #  # get just the email field to lookup users
         u = User.query.filter(User.email==credentials['email']).first()
@@ -287,13 +287,14 @@ def login_user():
             if check_password(u, credentials['password']):
                 token = u.encode_auth_token() # ?
                 print "Correct password, issuing token:", token
-                return jsonify({"token": token})
+
+                return (jsonify({"token": token}), 200)
 
             print "Incorrect password for user:", u.email
-            return jsonify({"error": "invalid password"})
+            return jsonify({"error": "invalid password"}), 422
         else:
-            return jsonify({"error": "user {} not found".format(credentials['email'])})
-    return jsonify({"error": "invalid request. Use key 'email' and 'password' to login as a user."})
+            return jsonify({"error": "user {} not found".format(credentials['email'])}), 400
+    return jsonify({"error": "invalid request. Use key 'email' and 'password' to login as a user."}), 400
     
 
 # this simply takes the User object, and the password and determines

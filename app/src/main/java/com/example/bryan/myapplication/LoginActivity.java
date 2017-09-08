@@ -329,37 +329,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(ENDPOINT).addConverterFactory(GsonConverterFactory.create())
-                        .build();
 
-                UserInterface User = retrofit.create(UserInterface.class);
+            
 
-                // make request
-                Call<String> u = User.loginUser("bryan.mccoid@gmail.com", "somepassword");
-                // Simulate network access.
-                Response<String> token = u.execute();
-                if (token.isSuccessful()) {
-                    Log.d("TOKEN", token.body());
-                }
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            } catch (IOException e) {
 
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail)) {
+//                    // Account exists, return true if the password matches.
+//                    return pieces[1].equals(mPassword);
+//                }
+//            }
+//
+//            // TODO: register the new account here.
+//            return true;
         }
 
         @Override
