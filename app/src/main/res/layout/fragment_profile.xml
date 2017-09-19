@@ -67,7 +67,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/All Time"
+                        android:id="@+id/All_Time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -107,7 +107,7 @@
                                 tools:layout_editor_absoluteX="16dp" />
 
                             <ProgressBar
-                                android:id="@+id/Daily Goal"
+                                android:id="@+id/Daily_Goal"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

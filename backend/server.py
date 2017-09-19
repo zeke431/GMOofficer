@@ -329,9 +329,9 @@ def get_user(user_id):
 
 if __name__ == "__main__":
     excel.init_excel(app)
-    # u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
-    # db.session.add(u)
-    # db.session.commit()
+    u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
+    db.session.add(u)
+    db.session.commit()
     # auth_token = u.encode_auth_token()
     # print auth_token
     # decoded = u.decode_auth_token(auth_token)

@@ -345,28 +345,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Response<User> token = null;
             try {
                 token = u.execute();
+                if (token != null && token.code() >= 200 && token.code() <= 299) {
+                    Log.d("TOKEN", token.body().getToken());
+                    String t = token.body().getToken();
+                    return true;
+                } else {
+                    Log.d("TOKEN", token.errorBody().string());
+                    return false;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-
-            if (token != null && token.isSuccessful()) {
-                Log.d("TOKEN", token.body().getToken());
-                return true;
-            } else {
                 return false;
             }
-
-
-//            for (String credential : DUMMY_CREDENTIALS) {
-//                String[] pieces = credential.split(":");
-//                if (pieces[0].equals(mEmail)) {
-//                    // Account exists, return true if the password matches.
-//                    return pieces[1].equals(mPassword);
-//                }
-//            }
-//
-//            // TODO: register the new account here.
-//            return true;
         }
 
         @Override
