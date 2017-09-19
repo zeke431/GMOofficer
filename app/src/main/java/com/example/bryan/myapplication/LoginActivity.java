@@ -341,7 +341,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             // make request
             Call<User> u = User.loginUser(loginCred);
-
+            
             Response<User> token = null;
             try {
                 token = u.execute();

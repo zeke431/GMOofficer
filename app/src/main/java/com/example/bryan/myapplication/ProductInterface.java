@@ -15,3 +15,4 @@ public interface ProductInterface {
     @GET("/api/products/{upc}")
     Call<Product> getProduct(@Path("upc") String barcode);
 }
+
