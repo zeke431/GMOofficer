@@ -338,9 +338,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             UserInterface User = retrofit.create(UserInterface.class);
             Credentials loginCred = new Credentials(mEmail, mPassword);
-            loginCred.email = mEmail;
-            loginCred.password = mPassword;
-
             // make request
             Call<User> u = User.loginUser(loginCred);
             
