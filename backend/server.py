@@ -19,6 +19,13 @@ app.config['SECRET_KEY'] = "random string or whatever you want"
 db = SQLAlchemy(app)
 excel.init_excel(app)
 
+# Statistics: 
+# Total saved:?
+# Personally saved:?
+# 
+#
+#
+
 Session = sessionmaker(bind=engine)
 
 secret_key="secret key"
@@ -34,6 +41,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
+    # current_total?
 
     def __init__(self, email="", password="", admin=False):
         
@@ -125,7 +133,7 @@ def hello_world():
 # this captures the value at a certain location in the url
 # ex. 127.0.0.1:5000/api/products/1
 # would return the string: "Number: 1"
-@app.route('/api/proigducts/<string:upc>')
+@app.route('/api/products/<string:upc>')
 def getProduct(upc):
     print upc # will print the number at the end of the url
 
@@ -321,13 +329,13 @@ def get_user(user_id):
 
 if __name__ == "__main__":
     excel.init_excel(app)
-    u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
-    db.session.add(u)
-    db.session.commit()
-    auth_token = u.encode_auth_token()
-    print auth_token
-    decoded = u.decode_auth_token(auth_token)
-    print decoded
+    # u = User("bryan.mccoid@gmail.com", "somepassword", admin=True)
+    # db.session.add(u)
+    # db.session.commit()
+    # auth_token = u.encode_auth_token()
+    # print auth_token
+    # decoded = u.decode_auth_token(auth_token)
+    # print decoded
 
 
 app.run(host='0.0.0.0')

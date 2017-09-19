@@ -338,12 +338,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             UserInterface User = retrofit.create(UserInterface.class);
             Credentials loginCred = new Credentials(mEmail, mPassword);
-            loginCred.email = mEmail;
-            loginCred.password = mPassword;
 
             // make request
             Call<User> u = User.loginUser(loginCred);
-            
+
             Response<User> token = null;
             try {
                 token = u.execute();
@@ -351,7 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 e.printStackTrace();
             }
 
-            if (token.isSuccessful()) {
+            if (token != null && token.isSuccessful()) {
                 Log.d("TOKEN", token.body().getToken());
                 return true;
             } else {
